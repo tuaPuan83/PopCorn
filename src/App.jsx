@@ -2,6 +2,11 @@ import "./App.css";
 import { useState } from "react";
 import Navbar from "./Navbar";
 import MainPage from "./MainContent";
+import Logo from "./Logo";
+import NumberResults from "./NumResults";
+import InputButton from "./InputButton";
+import ListBox from "./ListBox";
+import WatchedBox from "./WatchedBox";
 
 const tempMovieData = [
   {
@@ -54,12 +59,15 @@ function App() {
   const [movies, setMovies] = useState(tempMovieData);
   return (
     <>
-      <Navbar movies={movies} />
-      <MainPage
-        movies={movies}
-        tempMovieData={tempMovieData}
-        tempWatchedData={tempWatchedData}
-      />
+      <Navbar>
+      <Logo />
+      <InputButton />
+      <NumberResults movies={movies} />
+      </Navbar>
+      <MainPage>
+        <ListBox tempMovieData={tempMovieData} movies={movies} />
+      <WatchedBox tempWatchedData={tempWatchedData} />
+      </MainPage>
     </>
   );
 }
